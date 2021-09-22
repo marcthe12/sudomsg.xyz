@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+	<head>
+		<meta charset="utf-8">
+		<title>{{ title or metadata.title }}</title>
+		<meta name="author" content="{{ metadata.author.name }}">
+		<meta name="description" content="{{ description or metadata.description }}">
+		<meta name="generator" contents="eleventy">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link async rel="icon" href="{{ '/favicon.svg' | url }}" type="image/svg+xml">
+		<link rel="alternate" href="{{ metadata.feed | url }}" type="application/atom+xml" title="{{ metadata.title }}">
+		<link rel="canonical" href="{{ page.url | url | absoluteUrl(metadata.url) }}"/>
+		<link as="style" href="{{ '/index.css' | url }}" rel="stylesheet"/>
+		<link as="style" href="{{ '/prism.css' | url }}" rel="stylesheet">
+	</head>
+	<body>
+		<header>
+			<nav class="menu"><ul>
+			{% for nav in navigator %}
+				<li><a href="{{ nav.url | url }}">{{ nav.title }}</a></li>
+			{% endfor %}
+			</ul></nav>
+		</header>
+		<main>
+		  	{{ content | safe }}
+		</main>
+	</body>
+</html>
+

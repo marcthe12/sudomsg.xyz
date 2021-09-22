@@ -1,0 +1,19 @@
+---
+layout: base.njk
+title: Blog
+tags:
+    - navigator
+---
+<ul style="list-style-type:none">
+{% for post in collections.posts %}
+<li>
+	<h1>
+		<a href="{{ post.url | url }}">{{ post.data.title }}</a>
+	</h1>
+	<small>
+		<p>{{ metadata.author.name }} - {{ post.data.date | datefmt }}<p>
+	</small>
+		<p>{{ post.data.description }}<p>
+</li>
+{% endfor %}
+</ul>
