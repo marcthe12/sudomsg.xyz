@@ -1,13 +1,13 @@
 {
   "name": "sudomsg",
   "version": "1.0.0",
-  "description": "Website",
+  "description": "Sudomsg Website",
   "scripts": {
     "build": "eleventy",
-    "serve": "http-server dist/ -g",
+    "serve": "http-server dist/ -g"
   },
   "keywords": [],
-  "author": "",
+  "author": "Marc Pervaz Boocha",
   "license": "ISC",
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
@@ -24,7 +24,6 @@
   },
   "browserslist": [
     "defaults",
-    "not IE 11",
-    "maintained node versions"
+    "not IE 11"
   ]
 }
