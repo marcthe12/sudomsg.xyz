@@ -27,7 +27,6 @@ module.exports = class {
     return await postcss([
       require('postcss-import'),
       require('autoprefixer'),
-      require('cssnano')
     ])
       .process(await fs.readFileSync(inputfile), {
         from: inputfile
