@@ -19,9 +19,9 @@
 		<link rel="alternate" href="{{ metadata.feed | url }}" type="application/atom+xml" title="{{ metadata.title }}">
 		<link rel="manifest" href="{{ '/app.webmanifest' | url }}" crossorigin="use-credentials">
 		<meta name="theme-color" content"darkred">
-		<link as="style" href="{{ '/assets/index.css' | url }}" rel="stylesheet"/>
-		{% if syntaxhighlight %}<link as="style" href="{{ '/assets//prism.css' | url }}" rel="stylesheet"/>{% endif %}
-		<script type="module" src="{{ '/assets/index.js' | url }}"></script>
+		<link as="style" href="{{ '/index.css' | url }}" rel="stylesheet"/>
+		{% if syntaxhighlight %}<link as="style" href="{{ '/prism.css' | url }}" rel="stylesheet"/>{% endif %}
+		<script type="module" src="{{ '/index.js' | url }}"></script>
 	</head>
 	<body>
 		<header>

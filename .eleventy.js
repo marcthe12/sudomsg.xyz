@@ -22,6 +22,9 @@ module.exports = eleventyConfig => {
 
     eleventyConfig.addExtension("css", {
         outputFileExtension: "css",
+        compileOptions: {
+            permalink: "raw"
+        },
         compile: async(content, filename) =>
             async data => {
                 const css = await postcss()
@@ -37,8 +40,11 @@ module.exports = eleventyConfig => {
 
     eleventyConfig.addExtension("mjs", {
         outputFileExtension: "js",
-        compile: (content, filename) => {
-            return async data => {
+        compileOptions: {
+            permalink: "raw"
+        },
+        compile: (content, filename) =>
+            async data => {
                 const js = await babel.transformAsync(content, {
                     presets: [
                         ["@babel/preset-env", {
@@ -53,7 +59,6 @@ module.exports = eleventyConfig => {
                 })
                 return js.code
             }
-        }
     })
 
 
