@@ -1,62 +1,73 @@
 :root {
-	font-family: sans-serif;
+    font-family: serif;
 }
 
 @media screen {
-
-	body {
-		max-width: 920px;
-		margin: auto;
-		padding: 0.5rem;
-	}
-
-	:any-link {
-		color: inherit;
-		text-decoration: underline;
-	}
-
-	.menu :any-link {
-		text-decoration: inherit;
-	}
-
-	.menu ul {
-		background: darkred;
-		color: white;
-		padding: 1rem;
-		font-size: 1rem;
-	}
-
-	.menu li {
-		display: inline;
-		margin-right: 1rem;
-		padding-left: 0rem;
-		padding-right: 0rem;
-	}
-	
-	.err {
-		color: darkred;
-	}
-
-	@media (prefers-color-scheme: dark) {
-		:root {
-			background: black;
-			color: white;
-		}
-		
-		.menu ul {
-			background: red;
-		}
-		
-		.err {
-			color: red;
-		}
-
-	}
+    body {
+        max-width: 920px;
+        min-height: 98vh;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        padding: 0.5rem;
+    }
+    main {
+        flex-grow: 1;
+    }
+     :any-link {
+        color: inherit;
+        text-decoration: underline;
+    }
+     :any-link:hover,
+     :any-link:active {
+        font-style: italic;
+    }
+    #menu {
+        background: darkred;
+        text-decoration: none;
+        font-weight: bold;
+        color: white;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    @media (max-width: 450px) {
+        #menu a {
+            display: block;
+            text-align: center;
+            margin: auto;
+            padding: 20px;
+        }
+    }
+    #menu :any-link {
+        text-decoration: none;
+        margin-right: 1rem;
+        padding-left: 0rem;
+        padding-right: 0rem;
+    }
+    #menu :any-link:hover {
+        text-decoration: none;
+    }
+    .err {
+        color: darkred;
+    }
+    @media (prefers-color-scheme: dark) {
+         :root {
+            background: black;
+            color: white;
+        }
+        #menu nav {
+            background: red;
+        }
+        .err {
+            color: red;
+        }
+    }
 }
 
 @media print {
-	header,nav,footer{
-		display:none;
-	}
+    header,
+    nav,
+    footer {
+        display: none;
+    }
 }
-

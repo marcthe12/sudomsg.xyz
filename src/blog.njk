@@ -4,9 +4,8 @@ title: Blog
 tags:
     - navigator
 ---
-<ul style="list-style-type:none">
 {% for post in collections.posts %}
-<li>
+<article>
 	<h1>
 		<a href="{{ post.url | url }}">{{ post.data.title }}</a>
 	</h1>
@@ -14,6 +13,6 @@ tags:
 		<p>{{ metadata.author.name }} - {{ post.data.date | datefmt }}<p>
 	</small>
 		<p>{{ post.data.description }}<p>
-</li>
+</article>
 {% endfor %}
-</ul>
+
