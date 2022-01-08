@@ -2,4 +2,4 @@
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Permissions-Policy: document-domain=()
-  Content-Security-Policy: default-src 'self' script-src 'self' 'https://static.cloudflareinsights.com'; frame-ancestors 'none';
+  Content-Security-Policy: default-src 'self'; script-src 'self' static.cloudflareinsights.com; connect-src self cloudflareinsights.com frame-ancestors 'none';
