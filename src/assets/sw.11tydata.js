@@ -1,3 +1,3 @@
 module.exports = {
-    "permalink": "sw.js"
+    "permalink": "/sw.js"
 }
