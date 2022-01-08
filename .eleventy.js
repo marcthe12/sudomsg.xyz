@@ -63,6 +63,8 @@ module.exports = eleventyConfig => {
 
 
     eleventyConfig.addPassthroughCopy('static/')
+    eleventyConfig.addPassthroughCopy('_headers')
+    eleventyConfig.addPassthroughCopy('_redirects')
     eleventyConfig.addPassthroughCopy('favicon.svg')
     eleventyConfig.addPassthroughCopy('favicon.ico')
 
