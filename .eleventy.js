@@ -37,8 +37,9 @@ module.exports = eleventyConfig => {
 
     eleventyConfig.addExtension("mjs", {
         outputFileExtension: "js",
-        compile: (content, filename) =>
-            async data => {
+        compile: (content, filename) => {
+            return async data => {
+                console.log(data.page)
                 const js = await babel.transformAsync(content, {
                     presets: [
                         ["@babel/preset-env", {
@@ -53,6 +54,7 @@ module.exports = eleventyConfig => {
                 })
                 return js.code
             }
+        }
     })
 
 

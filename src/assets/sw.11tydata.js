@@ -1,3 +1,4 @@
 module.exports = {
-    "permalink": "/sw.js"
+    dynamicPermalink: false,
+    permalink: "/sw.js"
 }
