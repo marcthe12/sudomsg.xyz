@@ -39,7 +39,6 @@ module.exports = eleventyConfig => {
         outputFileExtension: "js",
         compile: (content, filename) => {
             return async data => {
-                console.log(data.page)
                 const js = await babel.transformAsync(content, {
                     presets: [
                         ["@babel/preset-env", {

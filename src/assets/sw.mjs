@@ -2,7 +2,7 @@ const cache_name = "v3"
 
 const install_sw = async event => {
     const precache = async() => {
-        const cache = await window.caches.open(cache_name);
+        const cache = await self.caches.open(cache_name);
         return cache.addAll([
             '/index.css',
             '/prism.css',
@@ -20,11 +20,11 @@ const activate_sw = async event => {
     const cachepreserve = ['v3'];
 
     const invalidatecache = async() => {
-        const keys = await window.caches.keys()
+        const keys = await self.caches.keys()
         Promise.all(
             keys.map((key) => {
                 if (cachepreserve.indexOf(key) === -1) {
-                    return window.caches.delete(key)
+                    return self.caches.delete(key)
                 }
             }))
     }
@@ -36,17 +36,17 @@ const fetch_sw = async event => {
         if (event.request.method != 'GET') {
             return
         }
-        const cacheres = await window.caches.match(event.request)
+        const cacheres = await self.caches.match(event.request)
         if (cacheres !== undefined) {
             return cacheres
         }
         try {
-            const response = await window.fetch(event.request)
-            const cache = await window.caches.open(cache_name)
+            const response = await self.fetch(event.request)
+            const cache = await self.caches.open(cache_name)
             cache.put(event.request, response.clone())
             return response
         } catch {
-            return window.caches.match('/offline.html')
+            return self.caches.match('/offline.html')
         }
     }
 
