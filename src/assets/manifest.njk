@@ -10,20 +10,29 @@ permalink: /app.webmanifest
   "id": "{{ '/' | url }}",
   "scope": "{{ '/' | url }}",
   "display": "minimal-ui",
-  "background_color": "red",
-  "theme_color": "red",
+  "background_color": "#8b0000",
+  "theme_color": "#8b0000",
   "description": "{{ metadata.description }}",
   "icons": [
     {
       "src": "{{ '/favicon.ico' | url }}",
-      "sizes": "256x256",
+      "sizes": "any",
       "type": "image/vnd.microsoft.icon"
     },
     {
-      "src": "{{ '/favicon.svg' | url }}",
+      "src": "{{ '/favicon/icon.svg' | url }}",
       "sizes": "any",
       "type": "image/svg+xml"
+    },
+    { 
+      "src": "{{ '/favicon/192.png' | url }}",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+       "src": "{{ '/favicon/512.png' | url }}",
+       "type": "image/png",
+       "sizes": "512x512" 
     }
   ]
-  
 }

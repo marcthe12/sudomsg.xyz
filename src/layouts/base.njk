@@ -15,10 +15,12 @@
 		<meta name="twitter:card" content="summary"></meta>
 		<meta property="og:url" content="{{ page.url | url | absoluteUrl(metadata.url) }}"/>
 		<link rel="canonical" href="{{ page.url | url | absoluteUrl(metadata.url) }}"/>
-		<link async rel="icon" href="{{ '/favicon.svg' | url }}" type="image/svg+xml">
 		<link rel="alternate" href="{{ metadata.feed | url }}" type="application/atom+xml" title="{{ metadata.title }}">
+		<link rel="icon" href="{{ '/favicon.ico' | url }}" sizes="any">
+		<link rel="icon" href="{{ '/favicon/icon.svg' | url }}" type="image/svg+xml">
+		<link rel="apple-touch-icon" href="{{ '/favicon/192.png' | url }}">
 		<link rel="manifest" href="{{ '/app.webmanifest' | url }}" crossorigin="use-credentials">
-		<meta name="theme-color" content"darkred">
+		<meta name="theme-color" content"#8b0000">
 		<link as="style" href="{{ '/index.css' | url }}" rel="stylesheet"/>
 		{% if syntaxhighlight %}<link as="style" href="{{ '/prism.css' | url }}" rel="stylesheet"/>{% endif %}
 		<script type="module" src="{{ '/index.js' | url }}"></script>

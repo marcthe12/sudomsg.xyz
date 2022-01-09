@@ -4,7 +4,7 @@ const sw_cache = {
         "/index.css",
         "/prism.css",
         "/index.js",
-        "/favicon.svg",
+        "/favicon/icon.svg",
         "/offline.html",
         "/"
     ],
@@ -16,7 +16,7 @@ self.addEventListener('install', event => {
     self.skipWaiting()
     event.waitUntil((async() => {
         const cache = await self.caches.open(sw_cache.store)
-        cache.addAll(sw_cache.default)
+        return cache.addAll(sw_cache.default)
     })())
 })
 
@@ -32,16 +32,16 @@ self.addEventListener('activate', event => {
 })
 
 self.addEventListener('fetch', event => {
-    if (event.request.method != 'GET') {
-        return
-    }
-
-    const req_url = new URL(event.request.url)
-    if (req_url.origin != self.location.origin) {
-        return
-    }
-
     event.respondWith((async() => {
+        if (event.request.method != 'GET') {
+            return fetch(event.request)
+        }
+
+        const req_url = new URL(event.request.url)
+        if (req_url.origin != self.location.origin) {
+            return fetch(event.request)
+        }
+
         const cacheres = await self.caches.match(event.request)
         return cacheres || (async() => {
             try {

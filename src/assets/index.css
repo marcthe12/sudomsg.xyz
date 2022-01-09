@@ -14,19 +14,19 @@
     main {
         flex-grow: 1;
     }
-     :any-link {
+    * :any-link {
         color: inherit;
         text-decoration: underline;
     }
-     :any-link:hover,
-     :any-link:active {
+    * :any-link:hover,
+    * :any-link:active {
         font-style: italic;
     }
     .topnav {
-        background: darkred;
+        background: rgb(139, 0, 0);
         text-decoration: none;
         font-weight: bold;
-        color: white;
+        color: rgb(255, 255, 255);
         padding: 1rem;
         font-size: 1rem;
     }
@@ -36,9 +36,7 @@
         padding-left: 0rem;
         padding-right: 0rem;
     }
-    .topnav :any-link {
-        text-decoration: none;
-    }
+    .topnav :any-link,
     .topnav :any-link:hover {
         text-decoration: none;
     }
@@ -58,18 +56,18 @@
         }
     }
     .err {
-        color: darkred;
+        color: rgb(139, 0, 0);
     }
     @media (prefers-color-scheme: dark) {
          :root {
-            background: black;
-            color: white;
+            background: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
         }
         #menu nav {
-            background: red;
+            background: rgb(255, 0, 0);
         }
         .err {
-            color: red;
+            color: rgb(255, 0, 0);
         }
     }
 }
