@@ -25,10 +25,10 @@
 	</head>
 	<body>
 		<header>
-			<nav id="menu">
-				<a href="#">Sudomsg</a>
+			<nav class="topnav">
+				<a href="#" id="nav-toogle">Sudomsg</a>
 				{% for nav in navigator %}
-					<a href="{{ nav.url | url }}">{{ nav.title }}</a>
+					<a class="navlinks" href="{{ nav.url | url }}">{{ nav.title }}</a>
 				{% endfor %}
 			</nav>
 		</header>

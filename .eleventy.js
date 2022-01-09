@@ -19,6 +19,8 @@ module.exports = eleventyConfig => {
     }).use(markdownattrs))
 
     eleventyConfig.addFilter('datefmt', date => DateTime.fromJSDate(date, { zone: 'utc' }).toFormat("dd LLL yyyy"))
+    eleventyConfig.addFilter("tojson", obj => JSON.stringify(obj))
+
 
     eleventyConfig.addExtension("css", {
         outputFileExtension: "css",
@@ -31,12 +33,16 @@ module.exports = eleventyConfig => {
                     .use(postcssenv)
                     .process(content, {
                         from: filename,
-                        map: data.env.isdevel
+                        map: data.env.NODE_ENV == "develoment"
                     })
 
                 return css.css
             }
     })
+
+    eleventyConfig.setBrowserSyncConfig({
+        snippet: false,
+    });
 
     eleventyConfig.addExtension("mjs", {
         outputFileExtension: "js",
@@ -54,7 +60,7 @@ module.exports = eleventyConfig => {
                             bugfixes: true
                         }]
                     ],
-                    sourceMaps: data.env.isdevel ? "inline" : false,
+                    sourceMaps: data.env.NODE_ENV == "develoment" ? "inline" : false,
                     sourceFileName: filename
                 })
                 return js.code

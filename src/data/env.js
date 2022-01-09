@@ -1,6 +1,3 @@
-const { env } = require("process")
+const process = require("process")
 
-module.exports = {
-    isdevel: env.NODE_ENV == "develoment",
-    env: env
-}
+module.exports = () => process.env

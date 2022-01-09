@@ -22,7 +22,7 @@
      :any-link:active {
         font-style: italic;
     }
-    #menu {
+    .topnav {
         background: darkred;
         text-decoration: none;
         font-weight: bold;
@@ -30,22 +30,32 @@
         padding: 1rem;
         font-size: 1rem;
     }
-    @media (max-width: 450px) {
-        #menu a {
-            display: block;
-            text-align: center;
-            margin: auto;
-            padding: 20px;
-        }
-    }
-    #menu :any-link {
-        text-decoration: none;
+    #nav-toogle,
+    .topnav a {
         margin-right: 1rem;
         padding-left: 0rem;
         padding-right: 0rem;
     }
-    #menu :any-link:hover {
+    .topnav :any-link {
         text-decoration: none;
+    }
+    .topnav :any-link:hover {
+        text-decoration: none;
+    }
+    @media (max-width: 450px) {
+        #nav-toogle,
+        .topnav a {
+            display: block;
+            margin: auto;
+            text-align: center;
+            padding: 16px;
+        }
+        .topnav .navlinks {
+            display: none;
+        }
+        .topnav .navlinks.navopen {
+            display: block
+        }
     }
     .err {
         color: darkred;
