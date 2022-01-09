@@ -6,7 +6,7 @@ const { DateTime } = require('luxon')
 const postcss = require('postcss')
 const postcssenv = require('postcss-preset-env')
 const babel = require("@babel/core");
-const env = require('./src/data/env')
+const crypto = require('crypto')
 
 module.exports = eleventyConfig => {
     eleventyConfig.addPlugin(eleventysyntaxhighlight)
@@ -58,6 +58,11 @@ module.exports = eleventyConfig => {
                                 "esmodules": true,
                             },
                             bugfixes: true
+                        }]
+                    ],
+                    plugins: [
+                        ["transform-define", {
+                            VERSION: `${data.env.CF_PAGES_BRANCH || "default"}-${data.env.CF_PAGES_COMMIT_SHA || crypto.randomUUID()}`
                         }]
                     ],
                     sourceMaps: data.env.NODE_ENV == "develoment" ? "inline" : false,

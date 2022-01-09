@@ -4,15 +4,16 @@ title: Blog
 tags:
     - navigator
 ---
-{% for post in collections.posts %}
-<article>
-	<h1>
-		<a href="{{ post.url | url }}">{{ post.data.title }}</a>
-	</h1>
-	<small>
-		<p>{{ metadata.author.name }} - {{ post.data.date | datefmt }}<p>
-	</small>
-		<p>{{ post.data.description }}<p>
-</article>
-{% endfor %}
-
+<div role="feed" aria-busy="false">
+	{% for post in collections.posts %}
+		<article aria-posinset="{{ loop.index }}" aria-setsize="{{ loop.size }}">
+			<h1>
+				<a href="{{ post.url | url }}">{{ post.data.title }}</a>
+			</h1>
+			<small>
+				<p>{{ metadata.author.name }} - {{ post.data.date | datefmt }}<p>
+			</small>
+				<p>{{ post.data.description }}</p>
+		</article>
+	{% endfor %}
+</div>
