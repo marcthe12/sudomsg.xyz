@@ -12,43 +12,48 @@ const sw_cache = {
     store: VERSION,
 }
 
-self.addEventListener('install', async event => {
+self.addEventListener('install', event => {
     self.skipWaiting()
-    const cache = await self.caches.open(sw_cache.store);
-    event.waitUntil(cache.addAll(sw_cache.default))
+    event.waitUntil((async() => {
+        const cache = await self.caches.open(sw_cache.store)
+        cache.addAll(sw_cache.default)
+    })())
 })
 
-self.addEventListener('activate', async event => {
-    const keys = await self.caches.keys()
-
-    event.waitUntil(Promise.all(keys.map(key => {
-        if (key !== sw_cache.store) {
-            return self.caches.delete(key)
-        }
-    })))
+self.addEventListener('activate', event => {
+    event.waitUntil((async() => {
+        const keys = await self.caches.keys()
+        Promise.all(keys.map(key => {
+            if (key !== sw_cache.store) {
+                return self.caches.delete(key)
+            }
+        }))
+    })())
 })
 
-self.addEventListener('fetch', async event => {
+self.addEventListener('fetch', event => {
     if (event.request.method != 'GET') {
         return
     }
 
-    const a = new URL(event.request.url)
-    if (a.origin != self.location.origin) {
+    const req_url = new URL(event.request.url)
+    if (req_url.origin != self.location.origin) {
         return
     }
 
-    const cacheres = await self.caches.match(event.request)
-    if (cacheres !== undefined) {
-        event.respondWith(cacheres)
-    }
-    try {
-        const response = await self.fetch(event.request)
-        const cache = await self.caches.open(sw_cache.store)
-        cache.put(event.request, response.clone())
-        event.respondWith(response)
-    } catch {
-        event.respondWith(self.caches.match(sw_cache.offline))
-    }
+    event.respondWith((async() => {
+        const cacheres = await self.caches.match(event.request)
+        return cacheres || (async() => {
+            try {
+                const response = await self.fetch(event.request)
+                const cache = await self.caches.open(sw_cache.store)
+                cache.put(event.request, response.clone())
+                return response
+            } catch {
+                return self.caches.match(sw_cache.offline)
+            }
+        })()
+    })())
+
 
 })
