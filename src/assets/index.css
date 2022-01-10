@@ -1,81 +1,126 @@
 :root {
-    font-family: serif;
+  --fg: rgb(0 0 0);
+  --bg: rgb(255 255 255);
+  --brand: rgb(139 0 0);
+
+  @media screen and (prefers-color-scheme: dark) {
+    --bg: rgb(0 0 0);
+    --fg: rgb(255 255 255);
+    --brand: rgb(255 0 0);
+  }
+}
+
+body {
+  font-family: serif;
+  background-color: var(--bg);
+  color: var(--fg);
+
+  @media screen {
+    max-width: 920px;
+    min-height: calc(100vh - 1rem);
+    margin: 0.5rem auto;
+    display: grid;
+    grid-template: "head" auto "main" auto "footer" 1fr / auto;
+
+    & > header {
+      background-color: var(--brand);
+      font-weight: bold;
+      color: rgb(255 255 255);
+      padding: 1rem;
+      grid-area: head;
+
+      & *:any-link {
+        text-decoration: none;
+      }
+    }
+
+    & > footer {
+      background-color: var(--brand);
+      color: rgb(255 255 255);
+      padding: 0.5rem;
+      align-self: end;
+      grid-area: footer;
+
+      & *:any-link {
+        text-decoration: none;
+      }
+
+      & > main {
+        grid-area: main;
+      }
+    }
+  }
+}
+
+* :any-link {
+  color: inherit;
+  text-decoration: underline;
+
+  @media screen {
+    &:is(:hover, :active) {
+      font-style: italic;
+    }
+  }
+}
+
+a[href^="mailto:"]::after {
+  content: "📧";
+}
+
+.err {
+  color: var(--brand);
+}
+
+aside {
+  width: 40%;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  float: right;
+  background-color: var(--brand);
+  color: rgb(255 255 255);
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+
+  &.side {
+    width: 40%;
+    float: right;
+
+    @media screen and (max-width: 450px) {
+      width: 100%;
+      float: none;
+    }
+  }
 }
 
 @media screen {
-    body {
-        max-width: 920px;
-        min-height: 98vh;
-        display: flex;
-        flex-direction: column;
-        margin: auto;
-        padding: 0.5rem;
-    }
-    main {
-        flex-grow: 1;
-    }
-    * :any-link {
-        color: inherit;
-        text-decoration: underline;
-    }
-    * :any-link:hover,
-    * :any-link:active {
-        font-style: italic;
-    }
-    .topnav {
-        background: rgb(139, 0, 0);
-        text-decoration: none;
-        font-weight: bold;
-        color: rgb(255, 255, 255);
-        padding: 1rem;
-        font-size: 1rem;
-    }
-    #nav-toogle,
-    .topnav a {
-        margin-right: 1rem;
-        padding-left: 0rem;
-        padding-right: 0rem;
-    }
-    .topnav :any-link,
-    .topnav :any-link:hover {
-        text-decoration: none;
-    }
+  nav > a {
+    margin-right: 1rem;
+    padding-left: 0;
+    padding-right: 0;
+
     @media (max-width: 450px) {
-        #nav-toogle,
-        .topnav a {
-            display: block;
-            margin: auto;
-            text-align: center;
-            padding: 16px;
+      display: block;
+      margin: auto;
+      text-align: center;
+      padding: 16px;
+
+      .navlinks {
+        display: none;
+
+        .navopen {
+          display: block;
         }
-        .topnav .navlinks {
-            display: none;
-        }
-        .topnav .navlinks.navopen {
-            display: block
-        }
+      }
     }
-    .err {
-        color: rgb(139, 0, 0);
-    }
-    @media (prefers-color-scheme: dark) {
-         :root {
-            background: rgb(0, 0, 0);
-            color: rgb(255, 255, 255);
-        }
-        #menu nav {
-            background: rgb(255, 0, 0);
-        }
-        .err {
-            color: rgb(255, 0, 0);
-        }
-    }
+  }
 }
 
 @media print {
-    header,
-    nav,
-    footer {
-        display: none;
-    }
+  header,
+  footer {
+    display: none;
+  }
 }

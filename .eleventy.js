@@ -1,24 +1,37 @@
+const eleventy = require('@11ty/eleventy')
 const eleventysyntaxhighlight = require('@11ty/eleventy-plugin-syntaxhighlight')
 const eleventyrss = require('@11ty/eleventy-plugin-rss')
+
 const markdown = require('markdown-it')
 const markdownattrs = require('markdown-it-attrs')
-const { DateTime } = require('luxon')
+const markdownanchor = require('markdown-it-anchor')
+const markdownfootnote = require('markdown-it-footnote')
+
 const postcss = require('postcss')
 const postcssenv = require('postcss-preset-env')
+
 const babel = require("@babel/core");
-const crypto = require('crypto')
+
+const crypto = require('node:crypto')
+const luxon = require('luxon')
+const slugify = require('@sindresorhus/slugify')
 
 module.exports = eleventyConfig => {
+    eleventyConfig.addPlugin(eleventy.EleventyRenderPlugin);
     eleventyConfig.addPlugin(eleventysyntaxhighlight)
     eleventyConfig.addPlugin(eleventyrss)
 
     eleventyConfig.setLibrary('md', markdown({
-        html: true,
-        linkify: true,
-        typographer: true
-    }).use(markdownattrs))
+            html: true,
+            linkify: true,
+            typographer: true
+        }).use(markdownattrs)
+        .use(markdownanchor, {
+            permalink: markdownanchor.permalink.headerLink(),
+            slugify: s => slugify(s)
+        }).use(markdownfootnote))
 
-    eleventyConfig.addFilter('datefmt', date => DateTime.fromJSDate(date, { zone: 'utc' }).toFormat("dd LLL yyyy"))
+    eleventyConfig.addFilter('datefmt', date => luxon.DateTime.fromJSDate(date, { zone: 'utc' }).toFormat("dd LLL yyyy"))
     eleventyConfig.addFilter("tojson", obj => JSON.stringify(obj))
 
 
@@ -29,8 +42,13 @@ module.exports = eleventyConfig => {
         },
         compile: async(content, filename) =>
             async data => {
-                const css = await postcss()
-                    .use(postcssenv)
+                const css = await postcss().use(
+                        postcssenv({
+                            stage: 3,
+                            features: {
+                                "nesting-rules": true
+                            }
+                        }))
                     .process(content, {
                         from: filename,
                         map: data.env.NODE_ENV == "develoment"
