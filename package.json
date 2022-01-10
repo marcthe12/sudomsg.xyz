@@ -2,8 +2,8 @@
     "name": "sudomsg",
     "version": "1.0.0",
     "description": "Sudomsg Website",
-    "Dependencies": {
-        "@11ty/eleventy": "^1.0.0-beta.10",
+    "dependencies": {
+        "@11ty/eleventy": "^1.0.0",
         "@11ty/eleventy-plugin-rss": "^1.1.2",
         "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.3",
         "@babel/core": "^7.16.7",
@@ -14,6 +14,8 @@
         "luxon": "^2.3.0",
         "markdown-it": "^12.3.0",
         "markdown-it-attrs": "^4.1.3",
+        "markdown-it-anchor": "^8.4.1",
+        "markdown-it-footnote": "^3.0.3",
         "postcss": "^8.4.5",
         "postcss-import": "^14.0.2",
         "postcss-preset-env": "^7.2.0"
@@ -44,9 +46,5 @@
     "bugs": {
         "url": "https://github.com/marcthe12/website/issues"
     },
-    "homepage": "https://sudomsg.xyz",
-    "dependencies": {
-        "markdown-it-anchor": "^8.4.1",
-        "markdown-it-footnote": "^3.0.3"
-    }
+    "homepage": "https://sudomsg.xyz"
 }
