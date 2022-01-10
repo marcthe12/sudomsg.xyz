@@ -1,0 +1,30 @@
+---
+permalink: /app.webmanifest
+---
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "name": "{{ metadata.title }}",
+  
+  "lang": "en-GB",
+  "start_url": "{{ '/' | url }}",
+  "id": "{{ '/' | url }}",
+  "scope": "{{ '/' | url }}",
+  "display": "minimal-ui",
+  "background_color": "#8b0000",
+  "theme_color": "#8b0000",
+  "description": "{{ metadata.description }}",
+  "icons": [
+    { 
+      "src": "{{ '/favicon/192.png' | url }}",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "{{ '/favicon/512.png' | url }}",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    }
+  ]
+}

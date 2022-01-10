@@ -1,6 +1,5 @@
 ---
 permalink: /feed.xml
-eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
@@ -21,7 +20,7 @@ eleventyExcludeFromCollections: true
 			<link href="{{ absolutePostUrl }}"/>
 			<updated>{{ post.date | dateToRfc3339 }}</updated>
 			<id>{{ '/' | url | absoluteUrl(metadata.url) }}</id>
-			<content type="html">{{ post.templateContent | htmlToAbsoluteUrls( absolutePostUrl ) }}</content>
+			<content type="html"><![CDATA[{{ post.templateContent | htmlToAbsoluteUrls( absolutePostUrl ) }}]]></content>
 		</entry>
 	{% endfor %}
 </feed>

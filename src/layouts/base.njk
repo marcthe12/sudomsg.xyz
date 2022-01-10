@@ -1,30 +1,46 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 	<head>
-		<meta charset="utf-8">
+		<meta charset="utf-8"/>
+		<meta property="og:locale" content="en_GB"/>
 		<title>{{ title or metadata.title }}</title>
-		<meta name="author" content="{{ metadata.author.name }}">
-		<meta name="description" content="{{ description or metadata.description }}">
-		<meta name="generator" contents="eleventy">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link async rel="icon" href="{{ '/favicon.svg' | url }}" type="image/svg+xml">
-		<link rel="alternate" href="{{ metadata.feed | url }}" type="application/atom+xml" title="{{ metadata.title }}">
+		<meta property="og:title" content="{{ title or metadata.title }}"/>
+		<meta property="og:site_name" content="{{ metadata.title }}"/>
+		<meta name="author" content="{{ metadata.author.name }}"/>
+		<meta name="description" content="{{ description or metadata.description }}"/>
+		<meta property="og:description" content="{{ description or metadata.description }}"/>
+		<meta name="keywords" contents="{{ keywords }}"/>
+		<meta name="generator" contents="eleventy"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="twitter:card" content="summary"/>
+		<meta property="og:url" content="{{ page.url | url | absoluteUrl(metadata.url) }}"/>
 		<link rel="canonical" href="{{ page.url | url | absoluteUrl(metadata.url) }}"/>
+		<link rel="alternate" href="{{ metadata.feed.atom | url }}" type="application/atom+xml" title="{{ metadata.title }}"/>
+		<link rel="alternate" href="{ metadata.feed.json | url }" type="application/feed+json" title="{{ metadata.title }}"/>
+		<link rel="icon" href="{{ '/favicon.ico' | url }}" sizes="any"/>
+		<link rel="icon" href="{{ '/favicon/icon.svg' | url }}" type="image/svg+xml"/>
+		<link rel="apple-touch-icon" href="{{ '/favicon/192.png' | url }}"/>
+		<link rel="manifest" href="{{ '/app.webmanifest' | url }}" crossorigin="use-credentials"/>
+		<meta name="theme-color" content="#8b0000"/>
 		<link as="style" href="{{ '/index.css' | url }}" rel="stylesheet"/>
-		<link as="style" href="{{ '/prism.css' | url }}" rel="stylesheet">
+		{% if syntaxhighlight %}<link as="style" href="{{ '/prism.css' | url }}" rel="stylesheet"/>{% endif %}
+		<script type="module" src="{{ '/index.js' | url }}"></script>
 	</head>
 	<body>
-		<header>
-			<nav class="menu"><ul>
-			{% for nav in navigator %}
-				<li><a href="{{ nav.url | url }}">{{ nav.title }}</a></li>
-			{% endfor %}
-			</ul></nav>
-		</header>
-		<main>
-		  	{{ content | safe }}
-		</main>
-		<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b70b2446607f42a4a139dea42210880e"}'></script>
+			<header>
+				<nav>
+					<a href="#" id="nav-toogle">Sudomsg</a>
+					{% for nav in navigator %}
+						<a class="navlinks" href="{{ nav.url | url }}">{{ nav.title }}</a>
+					{% endfor %}
+				</nav>
+			</header>
+			<main>
+				{{ content | safe }}
+			</main>
+			<footer>
+			Subscribe: <a href="{{ metadata.feed.atom | url }}" >RSS</a>
+				<a href="{{ metadata.feed.json | url }}" >JSON</a>
+			</footer>
 	</body>
 </html>
-
