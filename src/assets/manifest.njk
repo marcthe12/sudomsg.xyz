@@ -5,26 +5,25 @@ permalink: /app.webmanifest
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "name": "{{ metadata.title }}",
   
-  "lang": "en-GB",
-  "start_url": "{{ '/' | url }}",
-  "id": "{{ '/' | url }}",
-  "scope": "{{ '/' | url }}",
+  "lang": "{{ metadata.language }}",
+  "start_url": "/",
+  "id": "/",
+  "scope": "/",
   "display": "minimal-ui",
-  "background_color": "#8b0000",
-  "theme_color": "#8b0000",
+  "background_color": "{{ metadat.theme }}",
+  "theme_color": "{{ metadat.theme }}",
   "description": "{{ metadata.description }}",
   "icons": [
+{%- for size in [192,512,1024] %}
     { 
-      "src": "{{ '/favicon/192.png' | url }}",
+      "src": "/favicon/{{ size }}.png",
       "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "any"
-    },
-    {
-      "src": "{{ '/favicon/512.png' | url }}",
-      "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "any"
+      "sizes": "{{ size }}x{{ size }}",
+      "purpose": "maskable"
     }
+        {%- if not loop.last -%}
+    ,
+    {%- endif -%}
+    {%- endfor -%}
   ]
 }

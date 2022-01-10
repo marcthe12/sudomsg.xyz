@@ -8,8 +8,8 @@ tags:
 
 ## {{ metadata.author.name }}
 
-!["A Photo of me]({{ "/favicon/512.png" | url}}){.side}
+!["A Photo of me]({{ metadata.author.image | url}}){.side}
 
 Email: <{{ metadata.author.email }}>
 
-Github: <{{ metadata.author.github }}>
+Github: <{{ metadata.author.github | url}}>

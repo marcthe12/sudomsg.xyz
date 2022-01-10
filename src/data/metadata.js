@@ -2,6 +2,7 @@ module.exports = {
     title: "Sudomsg",
     url: "https://sudomsg.xyz/",
     language: "en-GB",
+    theme: "#8b0000",
     description: "Messages from root",
     feed: {
         atom: "/feed.xml",
@@ -11,6 +12,7 @@ module.exports = {
         name: "Marc Pervaz Boocha",
         email: "mboocha@sudomsg.xyz",
         github: "https://github.com/marcthe12",
-        url: "https://sudomsg.xyz/about"
+        image: "/favicon/512.png",
+        url: "/about/#marc-pervaz-boocha"
     }
 }

@@ -44,10 +44,11 @@ body {
       & *:any-link {
         text-decoration: none;
       }
+    }
 
-      & > main {
-        grid-area: main;
-      }
+    & > main {
+      margin: 0.5rem 0;
+      grid-area: main;
     }
   }
 }
@@ -59,6 +60,16 @@ body {
   @media screen {
     &:is(:hover, :active) {
       font-style: italic;
+    }
+  }
+}
+
+.header-anchor:any-link {
+  text-decoration: none;
+
+  @media screen {
+    &:is(:hover, :active) {
+      font-style: inherit;
     }
   }
 }
@@ -107,10 +118,10 @@ img {
       text-align: center;
       padding: 16px;
 
-      .navlinks {
+      &.navlinks {
         display: none;
 
-        .navopen {
+        &.navopen {
           display: block;
         }
       }
