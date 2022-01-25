@@ -1,3 +1,3 @@
-const process = require("process")
+const process = require("process");
 
-module.exports = () => process.env
+module.exports = () => process.env;

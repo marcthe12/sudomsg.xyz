@@ -1,0 +1,125 @@
+:root {
+    color-scheme: dark light;
+}
+
+@media screen {
+    body {
+        max-width: min(calc(100vw - 1rem), 58rem);
+        min-height: calc(100vh - 1rem);
+        box-sizing: border-box;
+        margin: 0.5rem auto;
+        display: grid;
+        grid: "head" auto "main" auto "footer" 1fr / auto;
+    }
+    body>header {
+        grid-area: head;
+    }
+     :is(header, footer) {
+        background-color: rgb(139 0 0);
+        font-weight: bold;
+        color: rgb(255 255 255);
+        padding: 1rem;
+    }
+     :is(header, footer) *:any-link {
+        text-decoration: none;
+    }
+    body>footer {
+        align-self: end;
+        grid-area: footer;
+    }
+    body>main {
+        margin: 0.5rem 0;
+        grid-area: main;
+        hyphens: auto;
+    }
+}
+
+* :any-link {
+    color: inherit;
+    text-decoration: underline;
+}
+
+* .header-anchor:any-link{
+	text-decoration: inherit;
+}
+
+* .header-anchor:any-link:hover,
+* .header-anchor:any-link:active {
+        font-style: inherit;
+}
+
+@media screen {
+    * :any-link:hover,
+    * :any-link:active {
+        font-style: italic;
+    }
+}
+
+a[href^="mailto:"]::after {
+    content: "📧";
+}
+
+.err {
+    color: rgb(139 0 0);
+}
+
+aside {
+    width: 40%;
+    padding: 0.5rem;
+    margin-left: 0.5rem;
+    float: right;
+    background-color: rgb(139 0 0);
+    color: rgb(255 255 255);
+}
+
+iframe,
+img,
+input,
+select,
+textarea {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+:is(iframe, img, input, select, textarea).side {
+    max-width: 40%;
+    padding: 0.5rem;
+    float: right;
+}
+
+@media screen and (max-width: 30rem) {
+     :is(iframe, img, input, select, textarea).side {
+        width: 100%;
+        float: none;
+    }
+}
+
+@media screen {
+    nav>a {
+        margin-right: 1rem;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    @media (max-width: 30rem) {
+        nav>a {
+            display: block;
+            margin: auto;
+            text-align: center;
+            padding: 16px;
+        }
+        nav>a.navlinks {
+            display: none;
+        }
+        nav>a.navlinks.navopen {
+            display: block;
+        }
+    }
+}
+
+@media print {
+    header,
+    footer {
+        display: none;
+    }
+}

@@ -1,15 +1,11 @@
 ---
-layout: base.njk
+layout: page
 title: About Me
-tags:
-    - navigator
 ---
-# About Me
-
 ## {{ metadata.author.name }}
 
-!["A Photo of me]({{ metadata.author.image | url}}){.side}
+!["A Photo of me]({{ metadata.author.image}}){.side}
 
 Email: <{{ metadata.author.email }}>
 
-Github: <{{ metadata.author.github | url}}>
+Github: <{{ metadata.author.github}}>

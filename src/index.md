@@ -1,11 +1,6 @@
 ---
-layout: base.njk
-title: Home
-tags:
-    - navigator
+layout: page
+title: Welcome
 ---
 
-# About This Blog 
-  
-This is my special place on the big World Wide Web
-
+![Mandlebrotset](/assets/mandle.png)

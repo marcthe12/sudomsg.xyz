@@ -1,9 +1,16 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "commonjs": true,
-        "es2021": true,
-        "node": true
+    extends: "eslint:recommended",
+    rules: {
+        semi: ["error", "always"],
+        quotes: ["error", "double"]
     },
-    "extends": "eslint:recommended",
-}
+    parserOptions: {
+        ecmaVersion: "latest",
+    },
+    env: {
+        es2021: true,
+        worker: true,
+        browser: true,
+        node: true
+    }
+};

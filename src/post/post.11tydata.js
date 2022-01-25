@@ -1,8 +1,8 @@
-const slugify = require("@sindresorhus/slugify")
+const slugify = require("@sindresorhus/slugify");
 
 module.exports = () => ({
-	layout: "post.njk",
-	eleventyComputed: {
-		permalink: data => `/posts/${slugify(data.title)}/`
-	}
-})
+    layout: "post",
+    eleventyComputed: {
+        permalink: data => `/posts/${slugify(data.title)}/`
+    }
+});

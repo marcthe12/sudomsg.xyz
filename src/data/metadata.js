@@ -15,4 +15,4 @@ module.exports = {
         image: "/favicon/512.png",
         url: "/about/#marc-pervaz-boocha"
     }
-}
+};
