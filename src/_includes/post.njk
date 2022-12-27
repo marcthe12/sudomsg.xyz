@@ -1,0 +1,9 @@
+---
+layout: page
+tags:
+    - posts
+---
+<small>
+    <time datetime="{{page.date | htmlDateString }}">{{ page.date | readableDate}}</time> - <a rel=author href="{{ metadata.author.url }}">{{ metadata.author.name }}</a>
+</small>
+{{content|safe}}

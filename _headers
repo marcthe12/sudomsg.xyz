@@ -1,8 +1,0 @@
-/*
-  X-Frame-Options: DENY
-  X-Content-Type-Options: nosniff
-  Permissions-Policy: document-domain=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' *.cloudflareinsights.com cloudflareinsights.com  'unsafe-inline'; connect-src 'self' *.cloudflareinsights.com cloudflareinsights.com  'unsafe-inline'; frame-ancestors 'none';
-
-  https://:project.pages.dev/*
-  X-Robots-Tag: noindex

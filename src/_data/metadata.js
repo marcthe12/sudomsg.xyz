@@ -12,6 +12,7 @@ module.exports = {
         name: "Marc Pervaz Boocha",
         email: "mboocha@sudomsg.xyz",
         github: "https://github.com/marcthe12",
+	linkedin: "https://www.linkedin.com/in/marc-pervaz-boocha-200706236/",
         image: "/favicon/512.png",
         url: "/about/#marc-pervaz-boocha"
     }

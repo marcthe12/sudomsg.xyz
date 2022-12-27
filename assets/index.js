@@ -5,8 +5,9 @@ document.getElementById("nav-toogle").addEventListener("click", async() => {
     }
     return false;
 });
-window.addEventListener("load", async() => {
-    if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/sw.js", { type: "module" });
-    }
-});
+
+//window.addEventListener("load", async() => {
+//    if ("serviceWorker" in navigator) {
+//        navigator.serviceWorker.register("/sw.js", { type: "module" });
+//    }
+//});

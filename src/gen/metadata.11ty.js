@@ -1,15 +1,13 @@
 module.exports = class {
     data() {
         return {
-            permalink: "/assets/metadata.js"
+            //permalink: "/assets/metadata.js"
+            permalink: false
         };
     }
 
     render() {
-        const obj = JSON.stringify({
-            version: new Date().toISOString()
-        });
-        return `const obj = '${obj}'
-        export default () => JSON.parse(obj);`;
+        const date = new Date()
+        return `export default = ${date.toISOString()}`
     }
 };

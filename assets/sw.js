@@ -1,6 +1,4 @@
-import metadata from "/assets/metadata.js"
-
-const data = metadata()
+import timestamp from "/assets/metadata.js"
 
 const sw_cache = {
     offline: "/offline.html",
@@ -11,7 +9,7 @@ const sw_cache = {
         "/favicon/icon.svg",
         "/offline.html",
     ],
-    store: data.version,
+    store:      timestamp,
 };
 
 (function() {
