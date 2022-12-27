@@ -1,6 +1,6 @@
 {
     "name": "sudomsg",
-    "version": "0.4.2",
+    "version": "0.4.3",
     "description": "Sudomsg Website",
     "dependencies": {
         "@11ty/eleventy": "^2.0.0-canary.16",
