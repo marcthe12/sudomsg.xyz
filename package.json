@@ -12,8 +12,8 @@
         "prismjs": "^1.27.0"
     },
     "scripts": {
-        "build": "eleventy --quiet",
-        "serve": "eleventy --serve --quiet",
+        "build": "eleventy",
+        "serve": "eleventy --serve",
         "start": "npm run serve",
         "debug": "DEBUG=* eleventy"
     },
