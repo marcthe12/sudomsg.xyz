@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "importHelpers": true,
+    "lib": ["es2022", "webworker"],
+    "composite": true,
+    "sourceMap": true
+  },
+}

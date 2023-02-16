@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/node-lts-strictest-esm",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "importHelpers": true,
+    "composite": true,
+    "sourceMap": true
+  }
+}
