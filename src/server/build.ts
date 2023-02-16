@@ -1,7 +1,7 @@
 import  { posts } from "./template/Post.js"
 import  { pages } from "./template/Base.js"
 
-const postMod = [
+const postMod: string[] = [
 ]
 
 const pageMod = [
