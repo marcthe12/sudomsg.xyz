@@ -1,15 +1,14 @@
 window.addEventListener("load", async function () {
 	try {
-		const navlinks : HTMLAnchorElement[] = Array.from(document.getElementsByClassName("navlinks")) as HTMLAnchorElement[]
+		const navlinks: HTMLAnchorElement[] = Array.from(document.getElementsByClassName("navlinks")) as HTMLAnchorElement[]
 
 		document.getElementById("nav-toogle")?.addEventListener("click", async () => {
-			navlinks.forEach(navlink => { navlink.style.display === "hidden" ? "block" : "hidden" })
-			return false
+			navlinks.forEach(navlink => {
+				navlink.style.display = window.matchMedia("(max-width: 30rem)").matches ? navlink.style.display === "block" ? "" : "block" : "";
+			});
+			return false;
 		})
 
-		Array.from(document.getElementsByTagName("time")).forEach(time => {
-			time.textContent = new Date(time.dateTime).toLocaleDateString(undefined,{dateStyle:"full"})
-		})
 
 		if ("serviceWorker" in navigator) {
 			await navigator.serviceWorker.register("/sw.js", { type: "module" })

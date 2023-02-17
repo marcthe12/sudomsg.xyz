@@ -118,7 +118,7 @@ aside {
     border: solid medium;
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 30rem) {
     .side, aside {
         margin: inherit;
         max-width: 100%;
