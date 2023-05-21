@@ -1,5 +1,5 @@
 # build stage
-FROM node:19-slim as build
+FROM node:20-slim as build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
@@ -7,7 +7,7 @@ COPY . .
 RUN npm run build
 
 # production build stage
-FROM node:19-slim as production
+FROM node:20-slim as production
 WORKDIR /app
 COPY --from=build /app/package*.json ./
 RUN npm install --omit=dev
